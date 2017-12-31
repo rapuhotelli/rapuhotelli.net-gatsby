@@ -6,8 +6,8 @@ import get from 'lodash/get'
 import 'typeface-montserrat'
 import 'typeface-merriweather'
 
-// import profilePic from './profile-pic.jpg'
 import { rhythm } from '../utils/typography'
+import { colors } from '../utils/constants';
 
 class Sidebar extends React.Component {
 
@@ -55,13 +55,13 @@ class Sidebar extends React.Component {
           {
             (this.state.currentPage !== 0)
               ? <span onClick={this.prevPage} style={{cursor: 'pointer'}}> ⇦ </span>
-              : <span style={{color: 'gray'}}> ⇦ </span>
+              : <span style={{color: colors.gray}}> ⇦ </span>
           }
         {this.state.currentPage+1} of {this.lastPage+1}
           {
             (this.state.currentPage < this.lastPage)
               ? <span onClick={this.nextPage} style={{cursor: 'pointer'}}> ⇨ </span>
-              : <span style={{color: 'gray'}}> ⇨ </span>
+              : <span style={{color: colors.gray}}> ⇨ </span>
           }
         </div>
         <ul style={{listStyleType: 'none', marginLeft: '0'}}>
@@ -75,7 +75,6 @@ class Sidebar extends React.Component {
                       {node.frontmatter.date} » {title}
                     </Link>)
                   : <span style={{ boxShadow: 'none', fontSize: '14px'}}>{node.frontmatter.date} » {title}</span>
-                  //`${node.frontmatter.date} » ${title}`
               }
             </li>
           )

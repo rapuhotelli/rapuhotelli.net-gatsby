@@ -13,23 +13,24 @@ class BlogPostTemplate extends React.Component {
     if (!post) {
       post = get(this.props, 'allMarkdownRemark.edges[0].node')
     }
-    console.log(post);
-    const siteTitle = get(this.props, 'data.site.siteMetadata.title')
-
+    console.log(this.props);
+    const siteTitle = get(this.props, 'data.site.siteMetadata.title', get(this.props, 'site.siteMetadata.title', 'rapuhotelli'))
+    
     return (
       <div style={{padding: '1rem'}}>
-        <Helmet title={`${post.frontmatter.title} | ${siteTitle}`} />
+        <Helmet title={`${post.frontmatter.title} | ${siteTitle}.net`} />
         <h1>{post.frontmatter.title}</h1>
-        <p
+        <div
           style={{
             ...scale(-1 / 5),
             display: 'block',
             marginBottom: rhythm(1),
-            //marginTop: rhythm(-1),
+            color: '#c4c4c4'
           }}
         >
-          {post.frontmatter.date}
-        </p>
+          <svg style={{fill: '#c4c4c4', marginRight: '5px'}} height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"></path></svg>          
+          <time>{post.frontmatter.date}</time>
+        </div>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
         <hr
           style={{

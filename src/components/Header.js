@@ -7,7 +7,7 @@ import 'typeface-merriweather'
 
 // import profilePic from './profile-pic.jpg'
 import { rhythm } from '../utils/typography'
-
+import { colors } from '../utils/constants';
 
 class Header extends React.Component {
   render() {
@@ -18,13 +18,13 @@ class Header extends React.Component {
           display: 'flex',
           flexFlow: 'row wrap',
           padding: '1rem 1rem 0 1rem',
-          borderBottom: '5px solid #e64946'
+          borderBottom: `5px solid ${colors.orange}`
         }}
       >
       
         <div style={{flex: '1 1 50%'}} >
           <Link to={'/'}>
-            <h1 style={{marginTop: '0', flexBasis: '100%'}}>{this.props.metaData.title}<span style={{color: 'gray'}}>.net</span></h1>
+            <h1 style={{marginTop: '0', flexBasis: '100%'}}>{this.props.metaData.title}<span style={{color: colors.gray}}>.net</span></h1>
             <p style={{color: 'black'}}>{this.props.metaData.description}</p>
           </Link>
         </div>

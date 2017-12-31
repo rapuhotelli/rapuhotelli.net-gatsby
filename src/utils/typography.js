@@ -2,7 +2,7 @@ import Typography from 'typography'
 //import Wordpress2016 from 'typography-theme-wordpress-2016'
 import fairyGates from 'typography-theme-fairy-gates'
 import { MOBILE_MEDIA_QUERY } from 'typography-breakpoint-constants'
-
+import { colors } from './constants';
 /*
 Wordpress2016.overrideThemeStyles = () => ({
   'a.gatsby-resp-image-link': {
@@ -10,7 +10,9 @@ Wordpress2016.overrideThemeStyles = () => ({
   },
 })
 */
-const orange = '#e64946'
+const orange = colors.orange
+const gray = colors.gray
+
 fairyGates.overrideThemeStyles = ({rhythm}) => ({
   'a': {
     color: orange,
@@ -33,5 +35,5 @@ const typography = new Typography(fairyGates)
 if (process.env.NODE_ENV !== 'production') {
   typography.injectStyles()
 }
-
 export default typography
+
