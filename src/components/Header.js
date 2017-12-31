@@ -17,13 +17,16 @@ class Header extends React.Component {
           gridArea: 'header',
           display: 'flex',
           flexFlow: 'row wrap',
-          padding: '1rem 1rem 0 1rem'
+          padding: '1rem 1rem 0 1rem',
+          borderBottom: '5px solid #e64946'
         }}
       >
       
         <div style={{flex: '1 1 50%'}} >
-          <h1 style={{marginTop: '0', flexBasis: '100%'}}>{this.props.metaData.title}</h1>
-          <p>{this.props.metaData.description}</p>
+          <Link to={'/'}>
+            <h1 style={{marginTop: '0', flexBasis: '100%'}}>{this.props.metaData.title}<span style={{color: 'gray'}}>.net</span></h1>
+            <p style={{color: 'black'}}>{this.props.metaData.description}</p>
+          </Link>
         </div>
 
         <div style={{flex: '1 1 50%', textAlign: 'right', display: 'flex'}}>

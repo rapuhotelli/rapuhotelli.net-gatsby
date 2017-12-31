@@ -1,6 +1,8 @@
 import Typography from 'typography'
 //import Wordpress2016 from 'typography-theme-wordpress-2016'
 import fairyGates from 'typography-theme-fairy-gates'
+import { MOBILE_MEDIA_QUERY } from 'typography-breakpoint-constants'
+
 /*
 Wordpress2016.overrideThemeStyles = () => ({
   'a.gatsby-resp-image-link': {
@@ -8,12 +10,21 @@ Wordpress2016.overrideThemeStyles = () => ({
   },
 })
 */
-fairyGates.overrideThemeStyles = () => ({
+const orange = '#e64946'
+fairyGates.overrideThemeStyles = ({rhythm}) => ({
   'a': {
-    color: 'black',
-    textDecoration: 'underline',
+    color: orange,
+    textDecoration: 'none',
     textShadow: 'none',
     backgroundImage: 'none'
+  },
+  blockquote: {
+    borderLeft: `${rhythm(6 / 16)} solid ${orange}`,
+  },
+  [MOBILE_MEDIA_QUERY]: {
+    blockquote: {
+      borderLeft: `${rhythm(3 / 16)} solid ${orange}`,
+    }
   }
 })
 const typography = new Typography(fairyGates)

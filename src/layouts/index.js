@@ -1,9 +1,10 @@
 import React from 'react'
 import Link from 'gatsby-link'
 // import { Container } from 'react-responsive-grid'
-import get from 'lodash/get';
-import Header from '../components/Header';
-import Sidebar from '../components/Sidebar';
+import get from 'lodash/get'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
+import Sidebar from '../components/Sidebar'
 import { rhythm, scale } from '../utils/typography'
 
 import '../global-css/layout.css';
@@ -22,11 +23,13 @@ const Layout = (props) => (
 )
 
 class Template extends React.Component {
+  
   render() {
     const { location, children } = this.props
     const metaData = get(this, 'props.data.site.siteMetadata')
     const posts = get(this, 'props.data.allMarkdownRemark.edges')
-
+    const newestSlug = get(posts[0], 'node.fields.slug');
+    const currentSlug = (location.pathname === '/') ? newestSlug : location.pathname;
     let rootPath = `/`
     if (typeof __PREFIX_PATHS__ !== `undefined` && __PREFIX_PATHS__) {
       rootPath = __PATH_PREFIX__ + `/`
@@ -35,8 +38,9 @@ class Template extends React.Component {
     return (
       <Layout>
         <Header metaData={metaData} />
-        <Sidebar posts={posts} />
+        <Sidebar posts={posts} currentSlug={currentSlug} />
         {children()}
+        <Footer />
       </Layout>
     )
   }

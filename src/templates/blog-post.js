@@ -2,16 +2,22 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import get from 'lodash/get'
 
-import Bio from '../components/Bio'
 import { rhythm, scale } from '../utils/typography'
 
 class BlogPostTemplate extends React.Component {
+
+
   render() {
-    const post = this.props.data.markdownRemark
+    console.log(this.props);
+    let post = get(this.props, 'data.markdownRemark')
+    if (!post) {
+      post = get(this.props, 'allMarkdownRemark.edges[0].node')
+    }
+    console.log(post);
     const siteTitle = get(this.props, 'data.site.siteMetadata.title')
 
     return (
-      <div>
+      <div style={{padding: '1rem'}}>
         <Helmet title={`${post.frontmatter.title} | ${siteTitle}`} />
         <h1>{post.frontmatter.title}</h1>
         <p
@@ -30,7 +36,6 @@ class BlogPostTemplate extends React.Component {
             marginBottom: rhythm(1),
           }}
         />
-        <Bio />
       </div>
     )
   }

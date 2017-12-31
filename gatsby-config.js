@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'rapuhotelli.net ',
+    title: 'rapuhotelli',
     author: 'rapuhotelli',
     description: 'and the longing for nothing',
     siteUrl: 'http://rapuhotelli.net',
