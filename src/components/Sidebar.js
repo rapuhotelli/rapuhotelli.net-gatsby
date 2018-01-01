@@ -31,11 +31,24 @@ class Sidebar extends React.Component {
     this.setState({
       currentPage: this.state.currentPage+1
     })
+    // GTM event
+    if (dataLayer) {
+      dataLayer.push({
+        event: 'archive-browse', 
+        toPage: (this.state.currentPage+1)+'' // state not updated yet
+      })
+    }
   }
   prevPage() {
     this.setState({
       currentPage: this.state.currentPage-1
     })
+    if (dataLayer) {
+      dataLayer.push({
+        event: 'archive-browse', 
+        toPage: (this.state.currentPage-1)+'' // state not updated yet
+      })
+    }
   }
   render() {
     return (

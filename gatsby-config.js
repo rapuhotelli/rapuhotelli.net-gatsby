@@ -5,8 +5,17 @@ module.exports = {
     description: 'and the longing for nothing',
     siteUrl: 'http://rapuhotelli.net',
   },
-  pathPrefix: '/gatsby-starter-blog',
+  //pathPrefix: '/',
   plugins: [
+    {
+      resolve: `gatsby-plugin-google-tagmanager`,
+      options: {
+        id: "GTM-T2FWSDQ",
+        // Include GTM in development.
+        // Defaults to false meaning GTM will only be loaded in production.
+        includeInDevelopment: true,
+      },
+    },
     'gatsby-plugin-react-next',
     {
       resolve: `gatsby-source-filesystem`,
@@ -40,12 +49,14 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    /*
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         //trackingId: `ADD YOUR TRACKING ID HERE`,
       },
     },
+    */
     `gatsby-plugin-feed`,
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
