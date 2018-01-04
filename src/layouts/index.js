@@ -6,12 +6,14 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import Sidebar from '../components/Sidebar'
 import { rhythm, scale } from '../utils/typography'
+import debounce from 'lodash/debounce'
+import styled from 'styled-components'
 
 import '../global-css/layout.css';
-
+/*
 const Layout = (props) => (
   <div className="container" style={{
-    maxWidth: rhythm(34), // 24
+    maxWidth: '1080px', //rhythm(34), // 24
     // padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
     paddingTop: '0',
     boxShadow: `0 0 10px rgba(50, 50, 50, 0.17)`,
@@ -21,25 +23,57 @@ const Layout = (props) => (
     {props.children}
   </div>
 )
+*/
+const Layout = styled.div`
+  max-width: 1080px;
+  padding-top: 0;
+  box-shadow: 0 0 10px rgba(50, 50, 50, 0.17);
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "content side"
+    "footer footer";
+  grid-template-columns: 7fr 4fr;
+  grid-template-rows: 1fr auto;
+  background-color: white;
+
+  @media (max-width: 800px) {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+      "header"
+      "content"
+      "side"
+      "footer";
+  }
+
+`
+
 
 class Template extends React.Component {
   
+  constructor(props) {
+    super(props)
+    this.onResize = this.onResize.bind(this);
+    this.state = {
+      layout: 'desktop'
+    }
+    window.addEventListener('resize', debounce(this.onResize, 300))
+  }
+
+  onResize() {
+    this.setState({
+      layout: (window.innerWidth < 800) ? 'mobile' : 'desktop'
+    }) 
+  }
+
   render() {
     const { location, children } = this.props
     const metaData = get(this, 'props.data.site.siteMetadata')
     const posts = get(this, 'props.data.allMarkdownRemark.edges')
     const newestSlug = get(posts[0], 'node.fields.slug');
     const currentSlug = (location.pathname === '/') ? newestSlug : location.pathname;
-
-    /*
-    if (dataLayer) {
-      dataLayer.push({
-        event: 'PageView',
-        path: location.pathname,
-        title: metaData.title
-      })
-    }
-    */
 
     let rootPath = `/`
     if (typeof __PREFIX_PATHS__ !== `undefined` && __PREFIX_PATHS__) {
@@ -49,8 +83,10 @@ class Template extends React.Component {
     return (
       <Layout>
         <Header metaData={metaData} />
-        <Sidebar posts={posts} currentSlug={currentSlug} />
-        {children()}
+        <Sidebar layout={this.state.layout} posts={posts} currentSlug={currentSlug} />
+        <div style={{padding: '0 1rem 1rem 1rem'}}>
+          {children()}
+        </div>
         <Footer />
       </Layout>
     )
@@ -76,26 +112,10 @@ query LayoutQuery {
         frontmatter {
           date(formatString: "DD MMMM, YYYY")
           title
+          series
         }
       }
     }
   }
 }
 `
-
-/*
-Header
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-T2FWSDQ');</script>
-<!-- End Google Tag Manager -->
-
-Body
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T2FWSDQ"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-*/

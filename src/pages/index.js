@@ -8,6 +8,7 @@ import BlogPost from '../templates/blog-post';
 //import Sidebar from '../components/Sidebar'
 //import Header from '../components/Header'
 import { rhythm } from '../utils/typography'
+import { colors } from '../utils/constants'
 
 class BlogIndex extends React.Component {
 
@@ -17,36 +18,12 @@ class BlogIndex extends React.Component {
 
   render() {
     const data = get(this, 'props.data')
-    return <BlogPost {...data}/>
-    /*
-    const siteTitle = get(this, 'props.data.site.siteMetadata.title')
-    const posts = get(this, 'props.data.allMarkdownRemark.edges')
-    console.log(posts);
     return (
-      <div style={{gridArea: 'content'}}>
-        <Helmet title={siteTitle} />
-        {posts.map(({ node }) => {
-          const title = get(node, 'frontmatter.title') || node.fields.slug
-          return (
-            <div key={node.fields.slug}>
-              <h3
-                style={{
-                  marginBottom: rhythm(1 / 4),
-                }}
-              >
-                <Link style={{ boxShadow: 'none' }} to={node.fields.slug}>
-                  {title}
-                </Link>
-              </h3>
-              <small>{node.frontmatter.date}</small>
-              <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
-            </div>
-          )
-        })}
-
+      <div>
+        <h2 style={{borderBottom: `5px solid ${colors.orange}`}}>Latest post</h2>
+        <BlogPost {...data}/>
       </div>
     )
-    */
   }
 }
 
@@ -64,7 +41,8 @@ export const pageQuery = graphql`
         node {
           frontmatter {
             title
-            date(formatString: "MMMM DD, YYYY")            
+            date(formatString: "MMMM DD, YYYY")    
+            series      
           }
           fields {
             slug
