@@ -3,6 +3,8 @@ import Link from 'gatsby-link'
 import get from 'lodash/get'
 import styled from 'styled-components'
 
+import ArchiveItem from './ArchiveItem';
+
 // Import typefaces
 import 'typeface-montserrat'
 import 'typeface-merriweather'
@@ -50,7 +52,7 @@ const StyledSidebar = styled.div`
       }
     }
   }
-
+/*
   .archive-item {
     margin-bottom: 0;
     font-size: 14px;
@@ -58,7 +60,7 @@ const StyledSidebar = styled.div`
   .archive-link {
 
   }
-
+*/
   .selection-arrow {
     color: ${colors.gray}
   }
@@ -91,12 +93,23 @@ class Sidebar extends React.Component {
     super(props)
     this.props = props;
     this.postsPerPage = 3
-    this.lastPage = Math.ceil(props.posts.length / this.postsPerPage) - 1
+    this.filter = 'all',
+    this.currentPosts = this.props.posts
+    this.lastPage = Math.ceil(this.currentPosts.length / this.postsPerPage) - 1    
     this.state = {
       currentPage: 0
     }
     this.nextPage = this.nextPage.bind(this)
     this.prevPage = this.prevPage.bind(this)
+    this.filterPosts = this.filterPosts.bind(this);
+    this.currentPosts = this.filterPosts('web');
+  }
+  
+
+  filterPosts(filter) {
+    console.log(filter);
+    if (filter === 'all') return this.props.posts;
+    return this.props.posts.filter(post => post.node.frontmatter.series.includes(filter))
   }
 
   gatePostsRange(pageId) {
@@ -145,20 +158,13 @@ class Sidebar extends React.Component {
               : <span className="selection-arrow"> ⇨ </span>
           }
         </div>
-        <div className="archive-items">
-          <ul>
-          {this.gatePostsRange().map(({ node }) => {
-            const title = get(node, 'frontmatter.title') || node.fields.slug
-            return (
-              <li className="archive-item" key={node.fields.slug}>
-                {node.frontmatter.date} » {' '}
-                <Link to={node.fields.slug} className="archive-link">
-                  {title}
-                </Link>
-              </li>
-            )
-          })}
-          </ul>
+
+        <ul>
+          {this.gatePostsRange().map(({ node }) => <ArchiveItem key={node.fields.slug} node={node} />)}
+        </ul>
+        <h2>Series</h2>
+        <div className="series-select">
+          <span onClick={this.filterPosts.bind(this, 'web')}>web</span>
         </div>
       </StyledSidebar>
     )
