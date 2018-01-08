@@ -20,9 +20,20 @@ const StyledSidebar = styled.div`
   margin-left: 1rem;
   margin-right: 1rem;
   margin-top: 0;
-  h2 {
+  .archive-header {
     border-bottom: 5px solid #e64946;
+    display: flex;
+    margin-top: 2.175rem;
+    margin-bottom: 0.725rem;
+    h2 {
+      margin: 0;
+    }
+    .archive-browse {
+      text-align: right;
+      flex-grow: 1;
+    }
   }
+
   ul {
     list-style-type: none;
     margin-left: 0;
@@ -34,9 +45,7 @@ const StyledSidebar = styled.div`
   }
   .archive-browse {
     @media (max-width: 800px) {
-      text-align: center;
       font-size: 24px;
-      padding: 1rem;
     }
   }
 
@@ -50,6 +59,22 @@ const StyledSidebar = styled.div`
           margin-bottom: 10px;
         }
       }
+    }
+  }
+
+  .series-select {
+    font-size: 14px;
+    margin-bottom: 5px;
+    h4 {
+      margin: 0;
+    }
+    .serie-container {
+      color: #e64946;
+      cursor: pointer;
+      display: inline;
+    }
+    .active {
+      text-decoration: underline;
     }
   }
 /*
@@ -76,11 +101,6 @@ style={{
 */
 
 
-const navMobileStyles = {
-  textAlign: 'center',
-  fontSize: '24px',
-  padding: '1rem'
-}
 const navListStyles = {
   listStyleType: 'none', 
   marginLeft: '0'
@@ -94,27 +114,45 @@ class Sidebar extends React.Component {
     this.props = props;
     this.postsPerPage = 3
     this.filter = 'all',
-    this.currentPosts = this.props.posts
-    this.lastPage = Math.ceil(this.currentPosts.length / this.postsPerPage) - 1    
+    this.filteredPosts = this.props.posts
+    //this.lastPage = Math.ceil(this.filteredPosts.length / this.postsPerPage) - 1    
     this.state = {
-      currentPage: 0
+      currentPage: 0,
+      filter: 'all'
     }
     this.nextPage = this.nextPage.bind(this)
     this.prevPage = this.prevPage.bind(this)
     this.filterPosts = this.filterPosts.bind(this);
-    this.currentPosts = this.filterPosts('web');
+    //this.filteredPosts = this.filterPosts('web');
   }
   
 
   filterPosts(filter) {
-    console.log(filter);
     if (filter === 'all') return this.props.posts;
-    return this.props.posts.filter(post => post.node.frontmatter.series.includes(filter))
+    return this.props.posts.filter(post => post.node.frontmatter.series.includes(filter))    
   }
 
-  gatePostsRange(pageId) {
+  getFilteredPosts() {
+    if (this.state.filter === 'all') return this.props.posts;
+    return this.props.posts.filter(post => post.node.frontmatter.series.includes(this.state.filter))    
+  }
+
+  lastPage()  {
+    //console.log(this.filterPosts(this.state.filter));
+    const lastPage = Math.ceil(this.getFilteredPosts().length / this.postsPerPage) - 1    
+    return lastPage
+  }
+
+  getPostsRange(pageId) {
     const start = this.state.currentPage*this.postsPerPage;
-    return this.props.posts.slice(start, start+this.postsPerPage) 
+    return this.getFilteredPosts().slice(start, start+this.postsPerPage) 
+  }
+
+  setFilter(filter) {
+    this.setState({
+      filter: filter,
+      currentPage: 0
+    })
   }
 
   nextPage() {
@@ -144,28 +182,49 @@ class Sidebar extends React.Component {
     
     return (
       <StyledSidebar>
-        <h2>Archive</h2>
-        <div className="archive-browse" style={(this.props.layout === 'mobile') ? navMobileStyles : {}}>
-          {
-            (this.state.currentPage !== 0)
-              ? <span onClick={this.prevPage} style={{cursor: 'pointer'}}> ⇦ </span>
-              : <span className="selection-arrow"> ⇦ </span>
-          }
-        {this.state.currentPage+1} of {this.lastPage+1}
-          {
-            (this.state.currentPage < this.lastPage)
-              ? <span onClick={this.nextPage} style={{cursor: 'pointer'}}> ⇨ </span>
-              : <span className="selection-arrow"> ⇨ </span>
-          }
+        <div className="archive-header">
+          <h2>Archive</h2>
+          <div className="archive-browse">
+            {
+              (this.state.currentPage !== 0)
+                ? <span onClick={this.prevPage} style={{cursor: 'pointer'}}> ⇦ </span>
+                : <span className="selection-arrow"> ⇦ </span>
+            }
+            {this.state.currentPage+1} of {this.lastPage()+1}
+            {
+              (this.state.currentPage < this.lastPage())
+                ? <span onClick={this.nextPage} style={{cursor: 'pointer'}}> ⇨ </span>
+                : <span className="selection-arrow"> ⇨ </span>
+            }
+          </div>
         </div>
 
         <ul>
-          {this.gatePostsRange().map(({ node }) => <ArchiveItem key={node.fields.slug} node={node} />)}
+          {
+            this.getPostsRange().map(({ node }) => <ArchiveItem key={node.fields.slug} node={node} />)
+            //this.getFilteredPosts().map(({ node }) => <ArchiveItem key={node.fields.slug} node={node} />)
+          }
         </ul>
-        <h2>Series</h2>
+
         <div className="series-select">
-          <span onClick={this.filterPosts.bind(this, 'web')}>web</span>
+          <h4>Filter by series</h4>
+          <div className="serie-container">
+            <span className={this.state.filter==='all'?'active':''} onClick={() => this.setFilter('all')}>ALL</span>
+          </div>
+          {
+            this.props.series.map((serie, i) => {
+              return (
+                <div key={serie} className="serie-container">
+                  {', '}
+                  <span className={this.state.filter===serie?'active':''} onClick={() => this.setFilter(serie)}>
+                    {serie}
+                  </span>
+                </div>
+              )
+            })
+          }
         </div>
+
       </StyledSidebar>
     )
   }

@@ -1,7 +1,7 @@
 ---
 date: 2017-04-16T18:45:31+03:00
 description: ""
-series: ["web"]
+series: ["web", "english"]
 thumbnail: ""
 title: "Development for what"
 ---

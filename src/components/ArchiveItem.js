@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import get from 'lodash/get';
 
 const StyledArchiveItem = styled.div`
+  flex-basis: 100%;
   li {
     margin-bottom: 0;
     font-size: 14px;

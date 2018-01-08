@@ -72,6 +72,7 @@ class Template extends React.Component {
     const { location, children } = this.props
     const metaData = get(this, 'props.data.site.siteMetadata')
     const posts = get(this, 'props.data.allMarkdownRemark.edges')
+    const series = get(this, 'props.data.allMarkdownRemark.series')
     const newestSlug = get(posts[0], 'node.fields.slug');
     const currentSlug = (location.pathname === '/') ? newestSlug : location.pathname;
 
@@ -83,7 +84,7 @@ class Template extends React.Component {
     return (
       <Layout>
         <Header metaData={metaData} />
-        <Sidebar layout={this.state.layout} posts={posts} currentSlug={currentSlug} />
+        <Sidebar series={series} layout={this.state.layout} posts={posts} currentSlug={currentSlug} />
         <div style={{padding: '0 1rem 1rem 1rem'}}>
           {children()}
         </div>
@@ -104,6 +105,7 @@ query LayoutQuery {
     }
   }
   allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    series: distinct(field: frontmatter___series)
     edges {
       node {
         fields {
@@ -117,5 +119,15 @@ query LayoutQuery {
       }
     }
   }
+  
 }
 `
+
+/*
+{
+	allMarkdownRemark {
+	  distinct(field: frontmatter___series)
+	}
+}
+
+*/

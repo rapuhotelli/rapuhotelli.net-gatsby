@@ -2,7 +2,7 @@
 title: "So, you're a Full-Stack Developer"
 description: "You what?"
 date: 2017-08-20T18:20:13+02:00
-series: ["web"]
+series: ["web", "english"]
 thumbnail: ""
 ---
 
