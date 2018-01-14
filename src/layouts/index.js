@@ -59,13 +59,17 @@ class Template extends React.Component {
     this.state = {
       layout: 'desktop'
     }
-    window.addEventListener('resize', debounce(this.onResize, 300))
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', debounce(this.onResize, 300))
+    }
   }
 
   onResize() {
-    this.setState({
-      layout: (window.innerWidth < 800) ? 'mobile' : 'desktop'
-    }) 
+    if (typeof window !== `undefined`) {
+      this.setState({
+        layout: (window.innerWidth < 800) ? 'mobile' : 'desktop'
+      }) 
+    }
   }
 
   render() {

@@ -5,7 +5,7 @@ module.exports = {
     description: 'and the longing for nothing',
     siteUrl: 'http://rapuhotelli.net',
   },
-  //pathPrefix: '/',
+  pathPrefix: '/',
   plugins: [
     {
       resolve: `gatsby-plugin-google-tagmanager`,
