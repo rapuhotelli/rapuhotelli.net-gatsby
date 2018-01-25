@@ -72,6 +72,10 @@ class Template extends React.Component {
     }
   }
 
+  detectSeries() {
+
+  }
+
   render() {
     const { location, children } = this.props
     const metaData = get(this, 'props.data.site.siteMetadata')
@@ -79,7 +83,7 @@ class Template extends React.Component {
     const series = get(this, 'props.data.allMarkdownRemark.series')
     const newestSlug = get(posts[0], 'node.fields.slug');
     const currentSlug = (location.pathname === '/') ? newestSlug : location.pathname;
-
+    
     let rootPath = `/`
     if (typeof __PREFIX_PATHS__ !== `undefined` && __PREFIX_PATHS__) {
       rootPath = __PATH_PREFIX__ + `/`
@@ -88,7 +92,7 @@ class Template extends React.Component {
     return (
       <Layout>
         <Header metaData={metaData} />
-        <Sidebar series={series} layout={this.state.layout} posts={posts} currentSlug={currentSlug} />
+        <Sidebar series={series} layout={this.state.layout} posts={posts} currentPost={currentSlug} />
         <div style={{padding: '0 1rem 1rem 1rem'}}>
           {children()}
         </div>
