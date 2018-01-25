@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: 'rapuhotelli',
     author: 'rapuhotelli',
-    description: 'and the longing for nothing',
+    description: 'a strange diary and some stories for another time',
     siteUrl: 'http://rapuhotelli.net',
   },
   pathPrefix: '/',
