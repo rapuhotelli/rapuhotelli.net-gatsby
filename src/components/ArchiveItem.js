@@ -7,6 +7,7 @@ const StyledArchiveItem = styled.div`
   flex-basis: 100%;
   li {
     margin-bottom: 0;
+    margin-top: 5px;
     font-size: 14px;
   }
 `

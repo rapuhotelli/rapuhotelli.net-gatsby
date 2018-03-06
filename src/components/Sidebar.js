@@ -23,10 +23,11 @@ const StyledSidebar = styled.div`
   .archive-header {
     border-bottom: 5px solid #e64946;
     display: flex;
-    margin-top: 2.175rem;
+    /* margin-top: 2.175rem; */
     margin-bottom: 0.725rem;
     h2 {
-      margin: 0;
+      /* margin: 0; */
+      margin-bottom: 0;
     }
     .archive-browse {
       text-align: right;
@@ -77,29 +78,12 @@ const StyledSidebar = styled.div`
       text-decoration: underline;
     }
   }
-/*
-  .archive-item {
-    margin-bottom: 0;
-    font-size: 14px;
-  }
-  .archive-link {
 
-  }
-*/
   .selection-arrow {
     color: ${colors.gray}
   }
 
 `
-/*
-style={{
-  gridArea: 'side',
-  display: 'flex',
-  flexDirection: 'column',
-  margin: '1rem',
-}}
-*/
-
 
 const navListStyles = {
   listStyleType: 'none', 
@@ -122,7 +106,6 @@ class Sidebar extends React.Component {
     }
     this.nextPage = this.nextPage.bind(this)
     this.prevPage = this.prevPage.bind(this)
-    this.filterPosts = this.filterPosts.bind(this);
     //this.filteredPosts = this.filterPosts('web');
   }
   
@@ -184,28 +167,7 @@ class Sidebar extends React.Component {
       <StyledSidebar>
         <div className="archive-header">
           <h2>Archive</h2>
-          <div className="archive-browse">
-            {
-              (this.state.currentPage !== 0)
-                ? <span onClick={this.prevPage} style={{cursor: 'pointer'}}> ⇦ </span>
-                : <span className="selection-arrow"> ⇦ </span>
-            }
-            {this.state.currentPage+1} of {this.lastPage()+1}
-            {
-              (this.state.currentPage < this.lastPage())
-                ? <span onClick={this.nextPage} style={{cursor: 'pointer'}}> ⇨ </span>
-                : <span className="selection-arrow"> ⇨ </span>
-            }
-          </div>
         </div>
-
-        <ul>
-          {
-            this.getPostsRange().map(({ node }) => <ArchiveItem key={node.fields.slug} node={node} />)
-            //this.getFilteredPosts().map(({ node }) => <ArchiveItem key={node.fields.slug} node={node} />)
-          }
-        </ul>
-
         <div className="series-select">
           <h4>Filter by series</h4>
           <div className="serie-container">
@@ -224,6 +186,15 @@ class Sidebar extends React.Component {
             })
           }
         </div>
+
+        <ul>
+          {
+            //this.getPostsRange().map(({ node }) => <ArchiveItem key={node.fields.slug} node={node} />)
+            this.getFilteredPosts().map(({ node }) => <ArchiveItem key={node.fields.slug} node={node} />)
+          }
+        </ul>
+
+
 
       </StyledSidebar>
     )
