@@ -1,11 +1,8 @@
 {
-  "name": "gatsby-starter-blog",
-  "description": "Starter Gatsby Blog",
+  "name": "rapuhotelli.net-gatsby",
+  "description": "A blog on gatsby",
   "version": "1.0.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby-starter-blog/issues"
-  },
+  "author": "@rapuhotelli",
   "dependencies": {
     "gatsby": "^1.9.141",
     "gatsby-link": "^1.6.32",
@@ -39,7 +36,7 @@
     "gh-pages": "^1.1.0",
     "prettier": "^1.9.2"
   },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
+  "homepage": "https://github.com/rapuhotelli/rapuhotelli.net-gatsby#readme",
   "keywords": [
     "gatsby"
   ],
@@ -47,7 +44,7 @@
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
+    "url": "git+https://github.com/rapuhotelli/rapuhotelli.net-gatsby.git"
   },
   "scripts": {
     "dev": "gatsby develop",
