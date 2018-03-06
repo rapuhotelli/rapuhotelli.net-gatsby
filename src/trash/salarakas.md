@@ -3,6 +3,7 @@ date: 2017-02-20T17:00:00+02:00
 description: ""
 series: ["web", "suomeksi"]
 thumbnail: ""
+status: 0
 title: "Salarakas ja kasvuyritys"
 ---
 
