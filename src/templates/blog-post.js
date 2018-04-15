@@ -2,8 +2,16 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import get from 'lodash/get'
 
+import rehypeReact from "rehype-react";
+import InlineImage from "../components/inline/InlineImage";
+
 import { rhythm, scale } from '../utils/typography'
 import { colors } from '../utils/constants'
+
+const renderAst = new rehypeReact({
+  createElement: React.createElement,
+  components: { "inline-image": InlineImage },
+}).Compiler;
 
 class BlogPostTemplate extends React.Component {
 
@@ -33,7 +41,8 @@ class BlogPostTemplate extends React.Component {
             {' | '+series.join(', ')}
           </span>
         </div>
-        <div dangerouslySetInnerHTML={{ __html: post.html }} />
+        { renderAst(post.htmlAst) }
+
         { (post.frontmatter.PS)
           ? <p style={{color: colors.gray}}>
               <hr style={{marginBottom: rhythm(1)}}/>
@@ -58,7 +67,8 @@ export const pageQuery = graphql`
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
       id
-      html
+      htmlAst
+      
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")

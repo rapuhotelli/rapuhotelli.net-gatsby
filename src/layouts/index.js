@@ -8,6 +8,7 @@ import Sidebar from '../components/Sidebar'
 import { rhythm, scale } from '../utils/typography'
 import debounce from 'lodash/debounce'
 import styled from 'styled-components'
+import Expanded from '../components/Expanded'
 
 import '../global-css/layout.css';
 /*
@@ -91,6 +92,7 @@ class Template extends React.Component {
 
     return (
       <Layout>
+        <Expanded/>
         <Header metaData={metaData} />
         <Sidebar series={series} layout={this.state.layout} posts={posts} currentPost={currentSlug} />
         <div style={{padding: '0 1rem 1rem 1rem'}}>

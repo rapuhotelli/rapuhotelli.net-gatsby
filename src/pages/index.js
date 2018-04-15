@@ -13,8 +13,6 @@ class BlogIndex extends React.Component {
     super(props)
   }
 
-  
-
   render() {
     const data = get(this, 'props.data')
     return (
@@ -46,7 +44,7 @@ export const pageQuery = graphql`
           fields {
             slug
           }
-          html
+          htmlAst
         }
       }
     }

@@ -3,9 +3,11 @@ body {
   padding-top: 3rem;
   padding-bottom: 3rem;
   margin: 0;
+  position: relative;
 }
 @media (max-width: 800px) {
   body {
     padding: 0;
   }
 }
+

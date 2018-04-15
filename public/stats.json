@@ -1,66 +1,78 @@
 {
   "assetsByChunkName": {
     "component---src-pages-index-js": [
-      "component---src-pages-index-js-622dd97fc828ccede984.js",
-      "component---src-pages-index-js-622dd97fc828ccede984.js.map"
+      "component---src-pages-index-js-63d523605fec2439bbf1.js",
+      "component---src-pages-index-js-63d523605fec2439bbf1.js.map"
     ],
     "path---": [
-      "path----6cb3ec253d5246139b2f.js",
-      "path----6cb3ec253d5246139b2f.js.map"
+      "path----fc8b44ea0107ced6e68e.js",
+      "path----fc8b44ea0107ced6e68e.js.map"
+    ],
+    "path---2018-enter-2018": [
+      "path---2018-enter-2018-ae6c581596d22f871e7a.js",
+      "path---2018-enter-2018-ae6c581596d22f871e7a.js.map"
     ],
     "path---2017-meaning-of-life": [
-      "path---2017-meaning-of-life-070ac9a4c9e2313f788c.js",
-      "path---2017-meaning-of-life-070ac9a4c9e2313f788c.js.map"
+      "path---2017-meaning-of-life-5557105379c2339e8855.js",
+      "path---2017-meaning-of-life-5557105379c2339e8855.js.map"
     ],
     "component---node-modules-gatsby-plugin-offline-app-shell-js": [
       "component---node-modules-gatsby-plugin-offline-app-shell-js-5c4c5a0f7af9dc69d6d7.js",
       "component---node-modules-gatsby-plugin-offline-app-shell-js-5c4c5a0f7af9dc69d6d7.js.map"
     ],
     "component---src-templates-blog-post-js": [
-      "component---src-templates-blog-post-js-b32e0ac022df43ca6ca6.js",
-      "component---src-templates-blog-post-js-b32e0ac022df43ca6ca6.js.map"
+      "component---src-templates-blog-post-js-1c47611b93c41052fec8.js",
+      "component---src-templates-blog-post-js-1c47611b93c41052fec8.js.map"
     ],
     "component---src-layouts-index-js": [
-      "component---src-layouts-index-js-e7e925a243a38091cb37.js",
-      "component---src-layouts-index-js-e7e925a243a38091cb37.js.map"
+      "component---src-layouts-index-js-f4768786dcca407349c1.js",
+      "component---src-layouts-index-js-f4768786dcca407349c1.js.map"
+    ],
+    "path---2018-evaluation": [
+      "path---2018-evaluation-ec967653737a9d0fbadf.js",
+      "path---2018-evaluation-ec967653737a9d0fbadf.js.map"
+    ],
+    "path---2018-no-no-kuni-2": [
+      "path---2018-no-no-kuni-2-e1b136a40f930afabb23.js",
+      "path---2018-no-no-kuni-2-e1b136a40f930afabb23.js.map"
     ],
     "path---2017-full-stack": [
-      "path---2017-full-stack-1649a1ae479474da0a36.js",
-      "path---2017-full-stack-1649a1ae479474da0a36.js.map"
+      "path---2017-full-stack-24ea5978e336e553023f.js",
+      "path---2017-full-stack-24ea5978e336e553023f.js.map"
     ],
     "path---index": [
-      "path---index-a126e5615f8d189b8fa3.js",
-      "path---index-a126e5615f8d189b8fa3.js.map"
+      "path---index-9e5578623b777f147c80.js",
+      "path---index-9e5578623b777f147c80.js.map"
     ],
     "commons": [
-      "commons-686585e5056f7d2ccf68.js",
-      "commons-686585e5056f7d2ccf68.js.map"
+      "commons-896db2abf129be66e6dd.js",
+      "commons-896db2abf129be66e6dd.js.map"
     ],
     "path---offline-plugin-app-shell-fallback": [
       "path---offline-plugin-app-shell-fallback-a0e39f21c11f6a62c5ab.js",
       "path---offline-plugin-app-shell-fallback-a0e39f21c11f6a62c5ab.js.map"
     ],
     "app": [
-      "app-6d555c8b0bc2cb1fb696.js",
+      "app-e2a39a8c26fdd5a9fc86.js",
       "build-js-styles.css",
-      "app-6d555c8b0bc2cb1fb696.js.map",
+      "app-e2a39a8c26fdd5a9fc86.js.map",
       "build-js-styles.css.map"
     ],
-    "path---2017-for-what": [
-      "path---2017-for-what-5ea820af1bc4a1665047.js",
-      "path---2017-for-what-5ea820af1bc4a1665047.js.map"
+    "path---2018-health": [
+      "path---2018-health-00010775b07d09595bc5.js",
+      "path---2018-health-00010775b07d09595bc5.js.map"
     ],
-    "path---2017-secret-love": [
-      "path---2017-secret-love-7161a53d2794fbddc880.js",
-      "path---2017-secret-love-7161a53d2794fbddc880.js.map"
+    "path---2017-for-what": [
+      "path---2017-for-what-2985b72139571ec96987.js",
+      "path---2017-for-what-2985b72139571ec96987.js.map"
     ],
     "path---2017-lentils-gumbo": [
-      "path---2017-lentils-gumbo-0c451a64fc390a440c00.js",
-      "path---2017-lentils-gumbo-0c451a64fc390a440c00.js.map"
+      "path---2017-lentils-gumbo-49eeaa015f7ebf603d58.js",
+      "path---2017-lentils-gumbo-49eeaa015f7ebf603d58.js.map"
     ],
     "path---2017-enter-2017": [
-      "path---2017-enter-2017-cbe3979169036c59b9c6.js",
-      "path---2017-enter-2017-cbe3979169036c59b9c6.js.map"
+      "path---2017-enter-2017-de1b956cbc8b57a5d17f.js",
+      "path---2017-enter-2017-de1b956cbc8b57a5d17f.js.map"
     ]
   }
 }
