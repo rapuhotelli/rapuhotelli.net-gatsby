@@ -24,7 +24,7 @@ module.exports = {
         name: 'pages',
       },
     },
-    `gatsby-plugin-styled-components`,    
+    // `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {
@@ -34,7 +34,7 @@ module.exports = {
             options: {
               maxWidth: 655,
               showCaptions: true,
-              quality: 90
+              quality: 90,
             },
           },
           {
@@ -60,7 +60,7 @@ module.exports = {
     },
     */
     `gatsby-plugin-feed`,
-    `gatsby-plugin-offline`,
+    // `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: 'gatsby-plugin-typography',

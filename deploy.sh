@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
-gastby build
+gatsby build
 scp -r public rapuhotelli:/var/www/rapuhotelli.net
