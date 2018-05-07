@@ -35,7 +35,7 @@ class Header extends React.Component {
           </div>
           <div>
             <div style={{boxShadow: 'black 1px 1px 5px', width: '100px', height: '100px'}}>
-              <img style={{position: 'relative', top: '5px', left: '5px', transform: 'rotate(5deg)'}} src="http://place.manatee.lc/100/100.jpg"></img>
+              <img style={{position: 'relative', top: '5px', left: '5px', transform: 'rotate(5deg)'}} src="//place.manatee.lc/100/100.jpg"></img>
             </div>
           </div>
         </div>
